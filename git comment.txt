@@ -1,0 +1,88 @@
+任务一：
+
+1. 创建新分支，并切换
+git branch feature-newFunc
+git checkout feature-newFunc
+
+2. 在feature-newFunc分支上进行两次提交
+git checkout feature-newFunc
+git add .
+git status
+git commit -m "Added diary entry for feature work"
+git push origin feature-newFunc
+
+git add .
+git status
+git commit -m "Added another diary entry for feature work"
+git push origin feature-newFunc
+
+3. 合并feature-newFunc分支上的两次提交，并合并整个功能到main分支
+git rebase -i HEAD~2
+git push origin feature-newFunc --force
+git checkout main
+git merge feature-newFunc
+git push origin main
+
+任务二：
+
+git checkout main
+git log experiment
+
+commit decdde71121759e74f830b38ead5dcadf17ecb81 (upstream/experiment)
+Author: peri103 <yunruipei@163.com>
+Date:   Thu Nov 2 11:57:27 2023 +0800
+
+    Updated approach results.
+
+commit d58314c014e17c0f8091e4f715836e14815e443d
+Author: peri103 <yunruipei@163.com>
+Date:   Thu Nov 2 11:56:05 2023 +0800
+
+    Added new approach details.
+
+commit bf1ad18e65b3924d4b41d87ce35ee166ba154dc8
+Author: peri103 <yunruipei@163.com>
+Date:   Wed Nov 1 20:46:54 2023 +0800
+
+git cherry-pick d58314c014e17c0f8091e4f715836e14815e443d
+git push origin main
+
+任务三：
+
+git checkout dev
+git log
+git revert 7e9812494f2c2df534060a71792962be4d5cbab8
+git revert 1a5d6d2f1f36d128e6b9a6a2236fdc0d1113638e
+git push origin dev
+
+任务四：
+1. 在main分支上提交修改
+git checkout main
+echo "body { font-family: 'Times New Roman'; }" >> frontend/styles.css
+git add styles.css
+git commit -m "Update font family in styles.css"
+git push origin main
+
+2. 切换到feature-upload分支
+git checkout feature-upload
+
+3. 查看feature-upload与main分支之间的差异
+git diff main -- feature-upload
+
+4. 决定是否合并feature-upload分支到main。如果有合并冲突，请解决冲突后合并
+git checkout main
+git merge feature-upload
+git add .
+git commit -m "Merge feature-upload into main"
+git push origin main
+
+任务五：
+
+git checkout documentation
+git log
+git rebase -i 9cf2a7d^
+完成变基操作
+git push origin documentation --force
+git checkout main
+git merge documentation
+git push origin main
